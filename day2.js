@@ -399,4 +399,121 @@ async function fetchSystemData() {
   }
 }
 fetchSystemData();
+//day2 real life tasks
+// Task 1 — “this” inside an object method
+const user = {
+  name: "Sadhana Rijal",
+  login() {
+    console.log("Task 1:", this.name);
+  }
+};
+user.login();
+
+// Task 2 — “this” losing context
+const mockButton = {
+  name: "Button Component",
+  click() {
+    console.log("Task 2:", this.name);
+  }
+};
+const detachedClick = mockButton.click;
+try {
+  detachedClick();
+} catch (e) {
+  console.log("Task 2 Lost Context: undefined");
+}
+const fixedClick = mockButton.click.bind(mockButton);
+fixedClick();
+
+// Task 3 — Module: Export a config
+// config.js -> export const API_BASE_URL = "https://sadhana.com";
+// main.js -> import { API_BASE_URL } from "./config.js";
+const API_BASE_URL = "https://sadhana.com";
+console.log("Task 3:", API_BASE_URL);
+
+// Task 4 — Module: Utility functions
+// utils.js
+function formatCurrency(amount) { return `Rs. ${amount}`; }
+function generateRandomId() { return Math.floor(Math.random() * 1000); }
+function getTodayDate() { return new Date().toLocaleDateString(); }
+// main.js -> import { formatCurrency, generateRandomId, getTodayDate } from "./utils.js";
+console.log("Task 4:", formatCurrency(19), generateRandomId(), getTodayDate());
+
+// Task 5 — Class representing a Product
+class Product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+  getInfo() {
+    return `${this.name} costs Rs. ${this.price}`;
+  }
+}
+const p1 = new Product("React Course", 1500);
+console.log("Task 5:", p1.getInfo());
+
+// Task 6 — Inheritance example
+class FoodProduct extends Product {
+  constructor(name, price, expiryDate) {
+    super(name, price);
+    this.expiryDate = expiryDate;
+  }
+}
+const f1 = new FoodProduct("Momo", 150, "2026-06-16");
+console.log("Task 6:", f1.getInfo(), `Expires: ${f1.expiryDate}`);
+
+// Task 7 — Promise for fetching settings
+function fetchSettings() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ theme: "dark", language: "en" });
+    }, 2000);
+  });
+}
+fetchSettings().then((settings) => console.log("Task 7 Settings:", settings));
+
+// Task 8 — async/await fetching mock data
+function fetchUsers() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([{ name: "Sadhana Rijal", age: 19 }]);
+    }, 1000);
+  });
+}
+async function logUsers() {
+  const users = await fetchUsers();
+  console.log("Task 8 Users:", users);
+}
+logUsers();
+
+// Task 9 — try/catch handling API errors
+function fetchUsersWithErrors() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      Math.random() > 0.5 ? resolve([{ name: "Sadhana Rijal" }]) : reject("Network Timeout");
+    }, 1000);
+  });
+}
+async function safeLogUsers() {
+  try {
+    const users = await fetchUsersWithErrors();
+    console.log("Task 9 Success:", users);
+  } catch (error) {
+    console.log("Task 9 Error: Could not load user profiles. Please try again.");
+  }
+}
+safeLogUsers();
+
+// Task 10 — Combine everything
+async function runMiniApp() {
+  try {
+    const endpoint = API_BASE_URL; 
+    class CourseProduct extends Product {}
+    const items = await fetchUsers(); 
+    console.log(`Task 10 App: API connected to ${endpoint}. Profile compiled for ${items[0].name} using ID: ${generateRandomId()}`);
+  } catch (err) {
+    console.log("Task 10 Failure:", err);
+  }
+}
+runMiniApp();
 
