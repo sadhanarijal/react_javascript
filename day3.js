@@ -114,3 +114,66 @@ const simplifiedProducts = products.map(product => ({
     name: product.name,
     price: product.price
 }));
+// Array Methods (map, filter, reduce, find, forEach
+// 1. Use map to double all numbers in.
+const numbers1 =;
+const doubledNumbers = numbers1.map(num => num * 2);
+
+// 2. Use filter to get all even numbers from.
+const numbers2 =;
+const evenNumbers = numbers2.filter(num => num % 2 === 0);
+
+// 3. Use reduce to calculate the sum of.
+const numbers3 =;
+const totalSum = numbers3.reduce((acc, curr) => acc + curr, 0);
+
+// 4. Use find to get the first object with age > 18 from an array of user objects.
+const users = [
+    { name: "John", age: 15 },
+    { name: "Jane", age: 22 },
+    { name: "Alex", age: 19 }
+];
+const firstAdult = users.find(user => user.age > 18);
+
+// 5. Use forEach to log each element of ["apple", "banana", "orange"] with its index.
+const fruits = ["apple", "banana", "orange"];
+fruits.forEach((fruit, index) => {
+    console.log(`${index}: ${fruit}`);
+});
+
+// 6. Use map to extract only names from an array of user objects.
+const usersList = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 }
+];
+const namesOnly = usersList.map(user => user.name);
+
+// 7. Use filter to get products with price < 100 from an array of product objects.
+const itemsList = [
+    { name: "Book", price: 50 },
+    { name: "Watch", price: 150 },
+    { name: "Pen", price: 10 }
+];
+const cheapProducts = itemsList.filter(product => product.price < 100);
+
+// 8. Use reduce to find the maximum value in an array of numbers.
+const numbers4 =;
+const maxVal = numbers4.reduce((max, curr) => (curr > max ? curr : max), numbers4[0]);
+
+// 9. Use map and filter together to get names of adults (age >= 18) in uppercase.
+const crowd = [
+    { name: "Sam", age: 16 },
+    { name: "Sara", age: 21 },
+    { name: "Tom", age: 18 }
+];
+const adultNamesUpper = crowd
+    .filter(person => person.age >= 18)
+    .map(person => person.name.toUpperCase());
+
+// 10. Use forEach to build an HTML unordered list string from an array of items.
+const listItems = ["Home", "About", "Contact"];
+let htmlList = "<ul>";
+listItems.forEach(item => {
+    htmlList += `<li>${item}</li>`;
+});
+htmlList += "</ul>";
