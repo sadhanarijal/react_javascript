@@ -306,3 +306,97 @@ export const metadata = { country: "Nepal", status: "Active" };
 
 // 10. Import everything using *.
 import * as FullNamespace from "./module.js";
+// try/catch
+// 1. Try using undefined function.
+try {
+  unknownFunction();
+} catch (error) {
+  console.log("Task 1:", error.message);
+}
+
+// 2. Divide number by zero.
+try {
+  const result = 10 / 0;
+  console.log("Task 2:", result);
+} catch (error) {
+  console.log("Task 2 Error:", error.message);
+}
+
+// 3. Use custom error message.
+try {
+  throw new Error("Sadhana Rijal's profile update failed");
+} catch (error) {
+  console.log("Task 3:", error.message);
+}
+
+// 4. Throw error manually.
+try {
+  const age = 19;
+  if (age === 19) {
+    throw "Manual Error: Age matches criteria";
+  }
+} catch (error) {
+  console.log("Task 4:", error);
+}
+
+// 5. Create function with try/catch.
+function verifyUser(username) {
+  try {
+    if (!username) {
+      throw new Error("Username missing");
+    }
+    console.log("Task 5: User verified:", username);
+  } catch (error) {
+    console.log("Task 5 Error:", error.message);
+  }
+}
+verifyUser("Sadhana Rijal");
+
+// 6. Multiple catch messages.
+try {
+  const score = 100;
+  if (score > 50) {
+    throw new TypeError("Invalid score type format");
+  }
+} catch (error) {
+  if (error instanceof TypeError) {
+    console.log("Task 6: Handled a specific TypeError description");
+  } else {
+    console.log("Task 6: Handled a generic error type description");
+  }
+}
+
+// 7. Use finally.
+try {
+  console.log("Task 7: Executing code inside try block");
+} catch (error) {
+  console.log("Task 7 Error:", error.message);
+} finally {
+  console.log("Task 7 Finally: This line runs always");
+}
+
+// 8. Try JSON.parse with invalid JSON.
+try {
+  const badData = "{ name: Sadhana Rijal }";
+  JSON.parse(badData);
+} catch (error) {
+  console.log("Task 8:", error.message);
+}
+
+// 9. Catch error and log name.
+try {
+  throw new ReferenceError("Database entry missing");
+} catch (error) {
+  console.log("Task 9 Error Name:", error.name);
+}
+
+// 10. Use try/catch in async function.
+async function fetchSystemData() {
+  try {
+    await Promise.reject(new Error("Async connection timed out"));
+  } catch (error) {
+    console.log("Task 10 Async Error:", error.message);
+  }
+}
+fetchSystemData();
+
