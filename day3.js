@@ -54,3 +54,63 @@ function formatDate(year, month, day) {
     const paddedMonth = String(month).padStart(2, '0');
     return `${paddedDay}/${paddedMonth}/${year}`;
 }
+//Arrays & Objects
+// 1. Create an array colors with 5 color names and log the third element.
+const colors = ["red", "green", "blue", "yellow", "purple"];
+console.log(colors[2]);
+
+// 2. Create an object book with properties title, author, pages, and publishedYear.
+const book = {
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    pages: 208,
+    publishedYear: 1988
+};
+
+// 3. Add a new property isRead: true to an existing book object immutably (return new object).
+const updatedBook = { ...book, isRead: true };
+
+// 4. Create an array of 3 objects, each representing a student with name and grade.
+const students = [
+    { name: "Alice", grade: "A" },
+    { name: "Bob", grade: "B" },
+    { name: "Charlie", grade: "A" }
+];
+
+// 5. Create a nested object company with properties name, location, and employees (an array of names).
+const company = {
+    name: "Tech Corp",
+    location: "Kathmandu",
+    employees: ["Ram", "Shyam", "Hari"]
+};
+
+// 6. From an array numbers =, create a new array with each value increased by 5 immutably.
+const numbers =;
+const increasedNumbers = numbers.map(num => num + 5);
+
+// 7. Create an object car and add a new property color immutably.
+const car = { brand: "Toyota", model: "Corolla" };
+const coloredCar = { ...car, color: "red" };
+
+// 8. Create an array shoppingList and add a new item at the beginning immutably.
+const shoppingList = ["milk", "bread", "eggs"];
+const updatedShoppingList = ["apples", ...shoppingList];
+
+// 9. Create an object profile with nested address object containing city and country.
+const profile = {
+    username: "dipak123",
+    address: {
+        city: "Lalitpur",
+        country: "Nepal"
+    }
+};
+
+// 10. From an array of objects products, create a new array with only name and price properties.
+const products = [
+    { id: 1, name: "Laptop", price: 1000, category: "Electronics" },
+    { id: 2, name: "Phone", price: 500, category: "Electronics" }
+];
+const simplifiedProducts = products.map(product => ({
+    name: product.name,
+    price: product.price
+}));
