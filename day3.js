@@ -177,3 +177,59 @@ listItems.forEach(item => {
     htmlList += `<li>${item}</li>`;
 });
 htmlList += "</ul>";
+// Immutability Principles – 10 Practice Tasks
+// 1. Update an object's age from 25 to 26 immutably using spread operator.
+const userAge = { name: "Alice", age: 25 };
+const updatedAgeUser = { ...userAge, age: 26 };
+
+// 2. Add a new hobby to a person's hobbies array immutably.
+const personHobbies = { name: "Bob", hobbies: ["reading", "gaming"] };
+const updatedHobbiesPerson = { 
+    ...personHobbies, 
+    hobbies: [...personHobbies.hobbies, "cooking"] 
+};
+
+// 3. Remove the last element from an array immutably.
+const numbersList =;
+const arrayWithoutLast = numbersList.slice(0, -1);
+
+// 4. Replace the second element in an array immutably.
+const items = ["apple", "banana", "cherry"];
+const replacedElementArray = items.map((item, index) => index === 1 ? "orange" : item);
+
+// 5. Change a nested property address.city in an object immutably.
+const profileData = { name: "Charlie", address: { city: "Kathmandu", country: "Nepal" } };
+const updatedCityProfile = {
+    ...profileData,
+    address: {
+        ...profileData.address,
+        city: "Lalitpur"
+    }
+};
+
+// 6. Add a new key-value pair to an object immutably.
+const basicCar = { brand: "Tesla", model: "Model 3" };
+const extendedCar = { ...basicCar, year: 2024 };
+
+// 7. Remove a property deletedAt from an object immutably.
+const record = { id: 101, data: "Active", deletedAt: "2026-06-15" };
+const { deletedAt, ...cleanedRecord } = record;
+
+// 8. Merge two arrays immutably into a new array.
+const arr1 =;
+const arr2 =;
+const mergedArray = [...arr1, ...arr2];
+
+// 9. Merge two objects immutably into a new object.
+const obj1 = { name: "John" };
+const obj2 = { role: "Admin" };
+const mergedObject = { ...obj1, ...obj2 };
+
+// 10. Update a specific object in an array of objects immutably (by id).
+const employees = [
+    { id: 1, name: "Sam", salary: 3000 },
+    { id: 2, name: "Sara", salary: 4000 }
+];
+const updatedEmployees = employees.map(emp => 
+    emp.id === 2 ? { ...emp, salary: 4500 } : emp
+);
