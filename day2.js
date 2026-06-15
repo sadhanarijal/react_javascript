@@ -99,152 +99,210 @@ const registrationSystem = {
 const member = { name: "Sadhana Rijal", age: 19 };
 registrationSystem.processRecord.apply(member, ["Active", 2026]);
 //classes and inheritance 
-// 1. Create a base Class Person with name and age properties.
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
+// 1. Create class Vehicle.
+class Vehicle {
+  // Task 1: Defined base vehicle layout
+}
+
+// 2. Add constructor.
+class VehicleWithConstructor {
+  constructor(brand) {
+    this.brand = brand;
   }
 }
-const p1 = new Person("Sadhana Rijal", 19);
 
-// 2. Add a prototype method describe() to the Person class.
-Person.prototype.describe = function() {
-  return `${this.name} is ${this.age} years old.`;
-};
-console.log("Task 2:", p1.describe());
-
-// 3. Create a subclass Student that extends Person with a studentId property.
-class Student extends Person {
-  constructor(name, age, studentId) {
-    super(name, age);
-    this.studentId = studentId;
+// 3. Add method drive().
+class CompleteVehicle {
+  constructor(brand) {
+    this.brand = brand;
+  }
+  drive() {
+    console.log(`Task 3: Driving the ${this.brand}`);
   }
 }
-const s1 = new Student("Sadhana Rijal", 19, "STU-1992");
+const myCar = new CompleteVehicle("Toyota");
+myCar.drive();
 
-// 4. Add an instance method study() inside the Student class.
-Student.prototype.study = function(subject) {
-  return `${this.name} is studying ${subject}.`;
-};
-console.log("Task 4:", s1.study("React.js"));
+// 4. Extend class Bike.
+class Bike extends CompleteVehicle {
+  // Task 4: Bike inherits everything from CompleteVehicle
+}
+const myBike = new Bike("Yamaha");
+myBike.drive();
 
-// 5. Override the describe() method inside the Student class.
-class OverriddenStudent extends Student {
-  describe() {
-    return `${this.name} (Age: ${this.age}) has an ID of ${this.studentId}.`;
+// 5. Override drive().
+class CustomBike extends CompleteVehicle {
+  drive() {
+    console.log(`Task 5: Riding the ${this.brand} bike on two wheels`);
   }
 }
-const s2 = new OverriddenStudent("Sadhana Rijal", 19, "STU-1992");
-console.log("Task 5:", s2.describe());
+const sportsBike = new CustomBike("Honda");
+sportsBike.drive();
 
-// 6. Create a static method inside Person to validate adulthood.
-class StaticPerson extends Person {
-  static isAdult(age) {
-    return age >= 18;
-  }
-}
-console.log("Task 6: Is adult?", StaticPerson.isAdult(19));
-
-// 7. Implement a getter property for uppercase formatting of name.
-class GetterPerson extends Person {
-  get upperName() {
-    return this.name.toUpperCase();
-  }
-}
-const s3 = new GetterPerson("Sadhana Rijal", 19);
-console.log("Task 7:", s3.upperName);
-
-// 8. Implement a setter property to validate and update age values.
-class SetterPerson extends Person {
-  set updateAge(newAge) {
-    if (newAge > 0 && newAge < 120) this.age = newAge;
-  }
-}
-const s4 = new SetterPerson("Sadhana Rijal", 19);
-s4.updateAge = 20;
-console.log("Task 8: New Age:", s4.age);
-
-// 9. Use a private field (#) inside a class to encapsulate private data.
-class EncapsulatedPerson {
-  #secretToken = "SECURE_TOKEN_19";
+// 6. Create class Student.
+class Student {
   constructor(name) {
     this.name = name;
   }
-  getSecret() {
-    return this.#secretToken;
+}
+
+// 7. Add marks property.
+class GradedStudent {
+  constructor(name, marks) {
+    this.name = name;
+    this.marks = marks;
+  }
+  showMarks() {
+    console.log(`Task 7: ${this.name} scored ${this.marks}%`);
   }
 }
-const s5 = new EncapsulatedPerson("Sadhana Rijal");
-console.log("Task 9: Encapsulated field value:", s5.getSecret());
+const s1 = new GradedStudent("Sadhana Rijal", 19);
+s1.showMarks();
 
-// 10. Instantiate multiple instances from an extended subclass into an array and loop.
-const studentRegistry = [
-  new Student("Sadhana Rijal", 19, "STU-01"),
-  new Student("Rohan Shrestha", 21, "STU-02")
-];
-studentRegistry.forEach(s => console.log(`Task 10 Loop: ${s.name} - ID: ${s.studentId}`));
+// 8. Inherit class Programmer.
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  work() {
+    console.log(`${this.name} is working`);
+  }
+}
+class Programmer extends Person {
+  // Task 8: Programmer inherits work() from Person
+}
+const p1 = new Programmer("Sadhana Rijal");
+p1.work();
+
+// 9. Call parent method using super().
+class AdvancedProgrammer extends Person {
+  constructor(name, language) {
+    super(name);
+    this.language = language;
+  }
+  work() {
+    super.work();
+    console.log(`Task 9: Coding features in ${this.language}`);
+  }
+}
+const p2 = new AdvancedProgrammer("Sadhana Rijal", "JavaScript");
+p2.work();
+
+// 10. Create multiple child classes.
+class ParentVehicle {
+  constructor(type) {
+    this.type = type;
+  }
+}
+class CarChild extends ParentVehicle {}
+class TruckChild extends ParentVehicle {}
+
+const carInstance = new CarChild("Sedan");
+const truckInstance = new TruckChild("Cargo");
+console.log(`Task 10: Created instances of ${carInstance.type} and ${truckInstance.type}`);
+
 //promises and async/await
-// 1. Create a Promise that resolves with a generic success string.
-const successPromise = new Promise((resolve) => {
-  resolve("Task 1: Core operational promise successfully completed!");
+// 1. Create promise that resolves.
+const resolvePromise = new Promise((resolve) => {
+  resolve("Example User");
 });
-successPromise.then(console.log);
 
-// 2. Create a simulated asynchronous Promise that resolves after 2 seconds.
-const delayFetch = new Promise((resolve) => {
-  setTimeout(() => resolve("Task 2: Fetched profile data for Sadhana Rijal"), 2000);
+// 2. Create promise that rejects.
+const rejectPromise = new Promise((resolve, reject) => {
+  reject("Condition not met");
 });
-delayFetch.then(console.log);
 
-// 3. Create a conditional Promise that rejects if age is below threshold.
-const verifyAgeLimit = (age) => {
-  return new Promise((resolve, reject) => {
-    if (age >= 18) resolve("Task 3: Access granted.");
-    else reject("Task 3: Error: User is underage.");
+// 3. Use .then().
+resolvePromise.then((data) => {
+  console.log("Task 3 Resolved data:", data);
+});
+
+// 4. Use .catch().
+rejectPromise.catch((error) => {
+  console.log("Task 4 Rejected data:", error);
+});
+
+// 5. Convert to async/await.
+async function handlePromise() {
+  const data = await resolvePromise;
+  console.log("Task 5 Async/Await:", data);
+}
+handlePromise();
+
+// 6. Wait 2 seconds using setTimeout promise.
+const delay = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("Waited 2 seconds");
+  }, 2000);
+});
+delay.then((msg) => console.log("Task 6:", msg));
+
+// 7. Create function that returns promise.
+function getStudentInfo() {
+  return new Promise((resolve) => {
+    resolve({ name: "Jane Doe", age: 20 });
   });
-};
-verifyAgeLimit(19).then(console.log).catch(console.error);
-
-// 4. Chain multiple promises using .then() to process consecutive text changes.
-const transformName = (name) => Promise.resolve(name);
-transformName("Sadhana Rijal")
-  .then(res => res.toUpperCase())
-  .then(upper => console.log("Task 4 Chained:", upper));
-
-// 5. Handle runtime Promise errors globally using a trailing .catch() handler.
-const faultyPromise = () => Promise.reject("Task 5: Connection timed out.");
-faultyPromise().catch(err => console.log("Task 5 Caught:", err));
-
-// 6. Write an asynchronous function using async/await syntax structure.
-async function basicAsync() {
-  return "Task 6: Resolved value via async declaration syntax";
 }
-basicAsync().then(console.log);
 
-// 7. Use the await keyword to suspend processing until a delay promise fulfills.
-async function resolveDelayed() {
-  const data = await Promise.resolve("Task 7: Executed inline awaited resolution data");
-  console.log(data);
+// 8. Chain promises.
+getStudentInfo()
+  .then((student) => {
+    return student.name;
+  })
+  .then((name) => {
+    console.log("Task 8 Chained Name:", name);
+  });
+
+// 9. Use await inside async function.
+async function showAge() {
+  const student = await getStudentInfo();
+  console.log("Task 9 Awaited Age:", student.age);
 }
-resolveDelayed();
+showAge();
 
-// 8. Wrap async/await expressions in a try/catch block for clean error interception.
-async function criticalProcess() {
-  try {
-    await Promise.reject("Task 8: Database operational error occurs.");
-  } catch (err) {
-    console.log("Task 8 Handled Context:", err);
+// 10. Use multiple awaits.
+async function showAllDetails() {
+  const student = await getStudentInfo();
+  const msg = await delay;
+  console.log(`Task 10: ${student.name}, ${student.age}. Status: ${msg}`);
+}
+showAllDetails();
+//modules
+// 1. Export a variable.
+export const studentName = "Sadhana Rijal";
+
+// 2. Export a function.
+export function checkAge(age) {
+  return age >= 18;
+}
+
+// 3. Import a function.
+import { checkAge } from "./module.js";
+
+// 4. Export default.
+export default function logMessage() {
+  return "System active";
+}
+
+// 5. Import default.
+import myCustomLogger from "./module.js";
+
+// 6. Export multiple variables.
+export const varA = "Sadhana";
+export const varB = 19;
+
+// 7. Rename module on import.
+import { studentName as profileName } from "./module.js";
+
+// 8. Export class.
+export class StudentRecord {
+  constructor(name) {
+    this.name = name;
   }
 }
-criticalProcess();
 
-// 9. Execute independent promises concurrently using the Promise.all() iterable.
-const pA = Promise.resolve("User: Sadhana Rijal");
-const pB = Promise.resolve("Verified Age: 19");
-Promise.all([pA, pB]).then(res => console.log("Task 9 Concurrent All:", res));
+// 9. Export an object.
+export const metadata = { country: "Nepal", status: "Active" };
 
-// 10. Implement Promise.race() to extract the fastest returning promise completion.
-const fastResponse = new Promise(res => setTimeout(() => res("Fast server response"), 500));
-const slowResponse = new Promise(res => setTimeout(() => res("Slow server response"), 1500));
-Promise.race([fastResponse, slowResponse]).then(winner => console.log("Task 10 Race Winner:", winner));
+// 10. Import everything using *.
+import * as FullNamespace from "./module.js";
