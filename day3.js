@@ -105,7 +105,7 @@ const profile = {
     }
 };
 
-// 10. From an array of objects products, create a new array with only name and price properties.
+// 10. From an array of objects products, create  new array with only name & price properties.
 const products = [
     { id: 1, name: "Laptop", price: 1000, category: "Electronics" },
     { id: 2, name: "Phone", price: 500, category: "Electronics" }
