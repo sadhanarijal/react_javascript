@@ -85,7 +85,7 @@ const company = {
 };
 
 // 6. From an array numbers =, create a new array with each value increased by 5 immutably.
-const numbers =;
+const numbers = [1, 2, 3, 4];
 const increasedNumbers = numbers.map(num => num + 5);
 
 // 7. Create an object car and add a new property color immutably.
