@@ -116,15 +116,15 @@ const simplifiedProducts = products.map(product => ({
 }));
 // Array Methods (map, filter, reduce, find, forEach
 // 1. Use map to double all numbers in.
-const numbers1 =;
+const numbers1 = [1, 2, 3, 4];
 const doubledNumbers = numbers1.map(num => num * 2);
 
 // 2. Use filter to get all even numbers from.
-const numbers2 =;
+const numbers2 = [1, 2, 3, 4, 5, 6];
 const evenNumbers = numbers2.filter(num => num % 2 === 0);
 
 // 3. Use reduce to calculate the sum of.
-const numbers3 =;
+const numbers3 = [1, 2, 3, 4];
 const totalSum = numbers3.reduce((acc, curr) => acc + curr, 0);
 
 // 4. Use find to get the first object with age > 18 from an array of user objects.
@@ -157,7 +157,7 @@ const itemsList = [
 const cheapProducts = itemsList.filter(product => product.price < 100);
 
 // 8. Use reduce to find the maximum value in an array of numbers.
-const numbers4 =;
+const numbers4 = [5, 10, 3, 8];
 const maxVal = numbers4.reduce((max, curr) => (curr > max ? curr : max), numbers4[0]);
 
 // 9. Use map and filter together to get names of adults (age >= 18) in uppercase.
@@ -190,7 +190,7 @@ const updatedHobbiesPerson = {
 };
 
 // 3. Remove the last element from an array immutably.
-const numbersList =;
+const numbersList = [1, 2, 3, 4];
 const arrayWithoutLast = numbersList.slice(0, -1);
 
 // 4. Replace the second element in an array immutably.
@@ -216,8 +216,8 @@ const record = { id: 101, data: "Active", deletedAt: "2026-06-15" };
 const { deletedAt, ...cleanedRecord } = record;
 
 // 8. Merge two arrays immutably into a new array.
-const arr1 =;
-const arr2 =;
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
 const mergedArray = [...arr1, ...arr2];
 
 // 9. Merge two objects immutably into a new object.
