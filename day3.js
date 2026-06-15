@@ -233,3 +233,86 @@ const employees = [
 const updatedEmployees = employees.map(emp => 
     emp.id === 2 ? { ...emp, salary: 4500 } : emp
 );
+//Higher-Order Functions
+// 1. Write a higher-order function repeat(action, times) that calls action function times times.
+function repeat(action, times) {
+    for (let i = 0; i < times; i++) {
+        action(i);
+    }
+}
+
+// 2. Create a function operate(arr, fn) that applies fn to each element using map.
+function operate(arr, fn) {
+    return arr.map(fn);
+}
+
+// 3. Write a function filterBy(arr, conditionFn) that returns filtered array using the provided condition.
+function filterBy(arr, conditionFn) {
+    return arr.filter(conditionFn);
+}
+
+// 4. Create a higher-order function logger(fn) that logs "before" and "after" calling fn.
+function logger(fn) {
+    return function (...args) {
+        console.log("before");
+        const result = fn(...args);
+        console.log("after");
+        return result;
+    };
+}
+
+// 5. Write a function createAdder(x) that returns a new function adding x to its argument.
+function createAdder(x) {
+    return function (y) {
+        return x + y;
+    };
+}
+
+// 6. Create a higher-order function sortBy(arr, key) that sorts array of objects by given key.
+function sortBy(arr, key) {
+    return [...arr].sort((a, b) => {
+        if (a[key] < b[key]) return -1;
+        if (a[key] > b[key]) return 1;
+        return 0;
+    });
+}
+
+// 7. Write a function pipeline(...functions) that chains multiple functions (apply one after another).
+function pipeline(...functions) {
+    return function (initialValue) {
+        return functions.reduce((acc, fn) => fn(acc), initialValue);
+    };
+}
+
+// 8. Create a higher-order function withTax(taxRate) that returns a function to add tax to price.
+function withTax(taxRate) {
+    return function (price) {
+        return price + (price * taxRate);
+    };
+}
+
+// 9. Write a function debounce(fn, delay) that delays function execution (basic version).
+function debounce(fn, delay) {
+    let timeoutId;
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            fn(...args);
+        }, delay);
+    };
+}
+
+// 10. Create a higher-order function memoize(fn) that caches results of expensive pure functions.
+function memoize(fn) {
+    const cache = {};
+    return function (...args) {
+        const key = JSON.stringify(args);
+        if (key in cache) {
+            return cache[key];
+        }
+        const result = fn(...args);
+        cache[key] = result;
+        return result;
+    };
+}
+
