@@ -184,3 +184,67 @@ const studentRegistry = [
   new Student("Rohan Shrestha", 21, "STU-02")
 ];
 studentRegistry.forEach(s => console.log(`Task 10 Loop: ${s.name} - ID: ${s.studentId}`));
+//promises and async/await
+// 1. Create a Promise that resolves with a generic success string.
+const successPromise = new Promise((resolve) => {
+  resolve("Task 1: Core operational promise successfully completed!");
+});
+successPromise.then(console.log);
+
+// 2. Create a simulated asynchronous Promise that resolves after 2 seconds.
+const delayFetch = new Promise((resolve) => {
+  setTimeout(() => resolve("Task 2: Fetched profile data for Sadhana Rijal"), 2000);
+});
+delayFetch.then(console.log);
+
+// 3. Create a conditional Promise that rejects if age is below threshold.
+const verifyAgeLimit = (age) => {
+  return new Promise((resolve, reject) => {
+    if (age >= 18) resolve("Task 3: Access granted.");
+    else reject("Task 3: Error: User is underage.");
+  });
+};
+verifyAgeLimit(19).then(console.log).catch(console.error);
+
+// 4. Chain multiple promises using .then() to process consecutive text changes.
+const transformName = (name) => Promise.resolve(name);
+transformName("Sadhana Rijal")
+  .then(res => res.toUpperCase())
+  .then(upper => console.log("Task 4 Chained:", upper));
+
+// 5. Handle runtime Promise errors globally using a trailing .catch() handler.
+const faultyPromise = () => Promise.reject("Task 5: Connection timed out.");
+faultyPromise().catch(err => console.log("Task 5 Caught:", err));
+
+// 6. Write an asynchronous function using async/await syntax structure.
+async function basicAsync() {
+  return "Task 6: Resolved value via async declaration syntax";
+}
+basicAsync().then(console.log);
+
+// 7. Use the await keyword to suspend processing until a delay promise fulfills.
+async function resolveDelayed() {
+  const data = await Promise.resolve("Task 7: Executed inline awaited resolution data");
+  console.log(data);
+}
+resolveDelayed();
+
+// 8. Wrap async/await expressions in a try/catch block for clean error interception.
+async function criticalProcess() {
+  try {
+    await Promise.reject("Task 8: Database operational error occurs.");
+  } catch (err) {
+    console.log("Task 8 Handled Context:", err);
+  }
+}
+criticalProcess();
+
+// 9. Execute independent promises concurrently using the Promise.all() iterable.
+const pA = Promise.resolve("User: Sadhana Rijal");
+const pB = Promise.resolve("Verified Age: 19");
+Promise.all([pA, pB]).then(res => console.log("Task 9 Concurrent All:", res));
+
+// 10. Implement Promise.race() to extract the fastest returning promise completion.
+const fastResponse = new Promise(res => setTimeout(() => res("Fast server response"), 500));
+const slowResponse = new Promise(res => setTimeout(() => res("Slow server response"), 1500));
+Promise.race([fastResponse, slowResponse]).then(winner => console.log("Task 10 Race Winner:", winner));
