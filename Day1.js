@@ -2,7 +2,7 @@
 let firstName = "Sadhana";
 let lastName = "Rijal";
 
-// Combine using template literals with backticks
+
 let greeting = `Hello, my name is ${firstName} ${lastName}.`;
 console.log(greeting); 
 //t2:Create a let variable inside a block {} and try to access it outside. Then do the same with a const variable. Observe the errors.
@@ -24,7 +24,7 @@ console.log(multiply(5, 6));
 //t5:Create an object person with keys name, age, and country. Destructure the object to extract name and country into variables and log them.
 const person = {
   name: "sadhana",
-  age: 26,
+  age: 19,
   country: "Nepal"
 };
 
